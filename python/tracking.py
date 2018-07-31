@@ -136,7 +136,7 @@ class ParticleFilter:
 if __name__ == "__main__":
     cap = cv2.VideoCapture("movie/example.m4v")
     fourcc = cv2.VideoWriter_fourcc(*'XVID')
-    out = cv2.VideoWriter('cap/output.avi', fourcc, 30,
+    out = cv2.VideoWriter('output.avi', fourcc, 30,
     (int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)),
      int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))))
 
