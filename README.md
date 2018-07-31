@@ -16,7 +16,7 @@ Install python libraries:
 
 Clone:  
 `$ cd caffe/examples`  
-`$ git clone git clone https://github.com/Rehide/cnn_particlefilter.git`  
+`$ git clone https://github.com/Rehide/cnn_particlefilter.git`  
 
 Run:  
 `$ cd cnn_particlefilter/python`  
