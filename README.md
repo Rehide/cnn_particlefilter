@@ -5,9 +5,11 @@
 
 
 # Requirements  
-Caffe  
-Python2.7  
-Opencv3.x
+cnn_particlefilter requires the following to run:  
+
+- Caffe  
+- Python2.7  
+- Opencv3.x  
 # Usage  
 Install python libraries:  
 `$ pip install scikit-image`  
@@ -22,6 +24,3 @@ Run:
 
 Result Example:  
 ![Alt text](/python/frame.jpg)
-
-
-License:  
