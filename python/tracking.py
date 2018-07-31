@@ -3,7 +3,6 @@ import numpy as np
 import cv2
 import csv
 import math
-from PIL import Image
 import skimage
 import sys
 import time
@@ -92,8 +91,7 @@ class ParticleFilter:
             predictions = self.classifier.predict([img], oversample=False)
             # count the number of times recognized as class0
             argmax_class = np.argmax(predictions)
-            if argmax_class == 0:
-                self.count += 1
+            if argmax_class == 0: self.count += 1
             # save the probability of the class0 as a likelihood in the list
             intensity.append(predictions[0][int(0)])
         # calculate the weights
