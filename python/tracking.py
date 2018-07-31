@@ -148,7 +148,7 @@ if __name__ == "__main__":
         start = time.clock()
         # load the frame
         ret, frame = cap.read()
-        # x,y,w,h: bounding box
+        # x,y,w,h: coordinates of bounding box
         x, y, w, h = filter.filtering(frame)
         rx, ry = x+w, y+h
         # set not to exceed upper and lower limits
