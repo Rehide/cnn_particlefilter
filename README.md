@@ -38,8 +38,8 @@ $ git clone https://github.com/Rehide/cnn_particlefilter.git
 ```  
 3. Run:  
 ```
-$ cd cnn_particlefilter/python`  
-$ python tracking.py`
+$ cd cnn_particlefilter/python  
+$ python tracking.py
 ```  
 Result Example:  
 ![Alt text](/python/frame.jpg)
@@ -49,10 +49,10 @@ Result Example:
 Store your own learning data in `/data/0,1,2,3...` for each class.
 
 2. Create the LevelDB:  
-  ```  
-  $ cd data  
-  $ python leveldb.py
-  ```  
+```  
+$ cd data  
+$ python leveldb.py
+```  
 
 3. Create the classifier:  
 ※ *If the number of classes is changed, you need to change the num_output at line 204 of train_test.prototxt and at line 137 of cnn_particlefilter.prototxt.*  
