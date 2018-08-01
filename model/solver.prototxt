@@ -16,6 +16,6 @@ display: 100
 max_iter: 60000
 # snapshot intermediate results
 snapshot: 10000
-snapshot_prefix: "examples/cnn_particle/model/cnn_particlefilter"
+snapshot_prefix: "examples/cnn_particlefilter/model/cnn_particlefilter"
 # solver mode: CPU or GPU
 solver_mode: GPU
