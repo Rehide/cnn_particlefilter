@@ -1,7 +1,7 @@
 # cnn_particlefilter  
 This method proposes a new approach to automatically detect and track object using Convolutional Neural Network(CNN) and Particle Filter.  
 
-- By using Convolutional Neural Network as an observation model, it is possible to simplify the observation model and improve the accuracy of the classifier.  
+- By using CNN as an observation model of particle filter, it is possible to simplify the observation model and improve the accuracy of the classifier.  
 
 Learning data used to create classifier:  
  
