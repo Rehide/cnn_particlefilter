@@ -77,25 +77,20 @@ class ParticleFilter:
     # likelifood function
     def calcLikelihood(self, image):
         self.count = 0
-        # list that stores likelifood
-        intensity = []
+        intensity = [] # list that stores likelifood
         # get the likelihood for each particle
         for i in range(self.SAMPLEMAX):
             y, x, w, h = self.Y[i], self.X[i], self.W[i], self.H[i]
-            # obtain the ROI image of particle
-            roi = image[math.floor(y):math.floor(y+h), math.floor(x):math.floor(x+w)]
-            # convert the ROI image to caffe format
-            img = cv2.cvtColor(roi, cv2.COLOR_BGR2RGB)
+            roi = image[math.floor(y):math.floor(y+h), math.floor(x):math.floor(x+w)]  # obtain the ROI image of particle
+            img = cv2.cvtColor(roi, cv2.COLOR_BGR2RGB) # convert the ROI image to caffe format
             img = skimage.img_as_float(img).astype(np.float32)
-            # get the probability of target object from classifier
-            predictions = self.classifier.predict([img], oversample=False)
+            predictions = self.classifier.predict([img], oversample=False) # get the probability of target object from classifier
             # count the number of times recognized as class0
             argmax_class = np.argmax(predictions)
-            if argmax_class == 0: self.count += 1
-            # save the probability of the class0 as a likelihood in the list
-            intensity.append(predictions[0][int(0)])
-        # calculate the weights
-        weights = self.normalize(intensity)
+            if argmax_class == 0: 
+                self.count += 1
+            intensity.append(predictions[0][int(0)]) # save the probability of the class0 as a likelihood in the list
+        weights = self.normalize(intensity) # calculate the weights
         return weights
 
     # normalization function
@@ -144,13 +139,11 @@ if __name__ == "__main__":
 
     # tracking
     while cv2.waitKey(30) < 0:
-        # star measuring time
-        start = time.clock()
-        # load the frame
-        ret, frame = cap.read()
+        start = time.clock() # star measuring time
+        ret, frame = cap.read() # load the frame
         # x,y,w,h: coordinates of bounding box
         x, y, w, h = filter.filtering(frame)
-        rx, ry = x+w, y+h
+        rx, ry = x + w, y + h
         # set not to exceed upper and lower limits
         if rx > 640: rx = 640
         if ry > 480: ry = 480
@@ -158,15 +151,12 @@ if __name__ == "__main__":
         if ry < 0: ry = 0
         # draw the bounding box when the number recognized as class0 exceeds the majority
         if filter.count > filter.SAMPLEMAX / 2:
-            cv2.rectangle(frame,(int(x),int(y)),(int(rx),int(ry)),(0,0,255),2)
-        # finish measuring time
-        get_image_time = int((time.clock()-start)*1000)
-        # drow the fps
-        cv2.putText(frame,str(1000/get_image_time) + "fps",(10,30),2,1,(0,255,0))
+            cv2.rectangle(frame, (int(x),int(y)), (int(rx),int(ry)), (0,0,255), 2)
+        get_image_time = int((time.clock()-start)*1000) # finish measuring time
+        cv2.putText(frame, str(1000/get_image_time) + "fps", (10,30), 2, 1, (0,255,0)) # drow the fps
         cv2.imshow("frame", frame)
         out.write(frame)
-        # Esc key
-        if cv2.waitKey(30) & 0xFF == 27:break
+        if cv2.waitKey(30) & 0xFF == 27:break # Esc key
 
     # destroy resources
     cap.release()
