@@ -82,7 +82,8 @@ class ParticleFilter:
         for i in range(self.SAMPLEMAX):
             y, x, w, h = self.Y[i], self.X[i], self.W[i], self.H[i]
             roi = image[math.floor(y):math.floor(y+h), math.floor(x):math.floor(x+w)]  # obtain the ROI image of particle
-            img = cv2.cvtColor(roi, cv2.COLOR_BGR2RGB) # convert the ROI image to caffe format
+            img = cv2.resize(roi, (32,32)) # resize the ROI image
+            img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB) # convert the ROI image to caffe format
             img = skimage.img_as_float(img).astype(np.float32)
             predictions = self.classifier.predict([img], oversample=False) # get the probability of target object from classifier
             # count the number of times recognized as class0
